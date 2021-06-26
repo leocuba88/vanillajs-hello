@@ -7,7 +7,7 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   //write your code here
-  document.querySelector("#btn").addEventListener("click", () => {
+  function genRandomExcuse() {
     let who = ["The dog", "My grandma", "His turtle", "My bird"];
     let action = ["ate", "peed", "crushed", "broke"];
     let what = ["my homework", "the keys", "the car"];
@@ -22,8 +22,11 @@ window.onload = function() {
     var randomAction = action[Math.floor(Math.random() * action.length)];
     var randomWhat = what[Math.floor(Math.random() * what.length)];
     var randomWhen = when[Math.floor(Math.random() * when.length)];
-
-    document.querySelector("#excuse").innerHTML =
-      randomWho + " " + randomAction + " " + randomWhat + " " + randomWhen;
-  });
+    return randomWho + " " + randomAction + " " + randomWhat + " " + randomWhen;
+  }
+  const renderExcuse = () => {
+    document.querySelector("#excuse").innerHTML = genRandomExcuse();
+  };
+  document.querySelector("#btn").addEventListener("click", renderExcuse);
+  renderExcuse();
 };
